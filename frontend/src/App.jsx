@@ -53,20 +53,24 @@ const App = () => {
   };
 
   return (
-    <main className="container">
-      <header>
-        <h1>TaskFlow</h1>
-        <p>Gestiona tus tareas personales con una interfaz simple y clara.</p>
-      </header>
+    <main className="min-h-screen bg-slate-100 px-4 py-8 text-slate-800">
+      <div className="mx-auto w-full max-w-5xl">
+        <header className="mb-6">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">TaskFlow</h1>
+          <p className="mt-2 text-slate-600">Gestiona tus tareas personales con una interfaz simple y clara.</p>
+        </header>
 
-      <TaskForm onSubmit={submitTask} editingTask={editingTask} onCancel={() => setEditingTask(null)} />
-      <TaskFilters filters={filters} onChange={setFilters} />
+        <TaskForm onSubmit={submitTask} editingTask={editingTask} onCancel={() => setEditingTask(null)} />
+        <TaskFilters filters={filters} onChange={setFilters} />
 
-      {loading ? <p>Cargando tareas...</p> : null}
-      {error ? <p className="error">{error}</p> : null}
-      {actionError ? <p className="error">{actionError}</p> : null}
+        {loading ? <p className="mb-3 text-sm font-medium text-slate-600">Cargando tareas...</p> : null}
+        {error ? <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">{error}</p> : null}
+        {actionError ? (
+          <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">{actionError}</p>
+        ) : null}
 
-      <TaskList tasks={tasks} onEdit={setEditingTask} onDelete={handleDelete} onToggle={handleToggle} />
+        <TaskList tasks={tasks} onEdit={setEditingTask} onDelete={handleDelete} onToggle={handleToggle} />
+      </div>
     </main>
   );
 };

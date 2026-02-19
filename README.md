@@ -28,6 +28,7 @@ taskflow/
 │   ├── src/
 │   │   ├── App.jsx
 │   │   ├── main.jsx
+│   │   ├── index.css
 │   │   ├── components/
 │   │   │   ├── TaskFilters.jsx
 │   │   │   ├── TaskForm.jsx
@@ -40,6 +41,8 @@ taskflow/
 │   │       └── global.css
 │   ├── index.html
 │   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
 │   └── vite.config.js
 ├── db/
 │   └── init.sql
@@ -71,7 +74,7 @@ Base URL: `http://localhost:4000/api/tasks`
 - Respuestas 404 para recursos no encontrados.
 - Middleware global para errores no controlados.
 
-## 3) Frontend (React + Vite)
+## 3) Frontend (React + Vite + Tailwind CSS)
 
 ### Funcionalidades
 
@@ -87,7 +90,7 @@ Base URL: `http://localhost:4000/api/tasks`
 - Hooks (`useState`, `useEffect`, `useMemo`).
 - Estado global con Context API (`TaskContext`).
 - Cliente API en `services/taskService.js`.
-- Estilos con CSS simple sin librerías externas.
+- Estilos con Tailwind CSS (`src/index.css`, `tailwind.config.js`, `postcss.config.js`).
 
 ## 4) Script SQL para crear base de datos
 

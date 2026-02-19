@@ -47,24 +47,61 @@ export const TaskForm = ({ onSubmit, editingTask, onCancel }) => {
   };
 
   return (
-    <form className="task-form" onSubmit={handleSubmit}>
-      <h2>{editingTask ? 'Editar tarea' : 'Nueva tarea'}</h2>
-      <div className="field">
-        <label htmlFor="title">Título</label>
-        <input id="title" name="title" value={form.title} onChange={handleChange} required />
+    <form className="mb-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm" onSubmit={handleSubmit}>
+      <h2 className="mb-4 text-xl font-semibold text-slate-900">{editingTask ? 'Editar tarea' : 'Nueva tarea'}</h2>
+
+      <div className="mb-4 flex flex-col gap-2">
+        <label className="text-sm font-medium text-slate-700" htmlFor="title">
+          Título
+        </label>
+        <input
+          className="rounded-lg border border-slate-300 px-3 py-2 outline-none ring-0 transition focus:border-brand-500"
+          id="title"
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div className="field">
-        <label htmlFor="description">Descripción</label>
-        <textarea id="description" name="description" value={form.description} onChange={handleChange} />
+
+      <div className="mb-4 flex flex-col gap-2">
+        <label className="text-sm font-medium text-slate-700" htmlFor="description">
+          Descripción
+        </label>
+        <textarea
+          className="min-h-24 rounded-lg border border-slate-300 px-3 py-2 outline-none transition focus:border-brand-500"
+          id="description"
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+        />
       </div>
-      <div className="field-row">
-        <div className="field">
-          <label htmlFor="dueDate">Fecha límite</label>
-          <input id="dueDate" name="dueDate" type="date" value={form.dueDate} onChange={handleChange} />
+
+      <div className="mb-2 grid gap-3 md:grid-cols-2">
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="dueDate">
+            Fecha límite
+          </label>
+          <input
+            className="rounded-lg border border-slate-300 px-3 py-2 outline-none transition focus:border-brand-500"
+            id="dueDate"
+            name="dueDate"
+            type="date"
+            value={form.dueDate}
+            onChange={handleChange}
+          />
         </div>
-        <div className="field">
-          <label htmlFor="priority">Prioridad</label>
-          <select id="priority" name="priority" value={form.priority} onChange={handleChange}>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="priority">
+            Prioridad
+          </label>
+          <select
+            className="rounded-lg border border-slate-300 px-3 py-2 outline-none transition focus:border-brand-500"
+            id="priority"
+            name="priority"
+            value={form.priority}
+            onChange={handleChange}
+          >
             <option value="low">Baja</option>
             <option value="medium">Media</option>
             <option value="high">Alta</option>
@@ -72,12 +109,21 @@ export const TaskForm = ({ onSubmit, editingTask, onCancel }) => {
         </div>
       </div>
 
-      {localError ? <p className="error">{localError}</p> : null}
+      {localError ? <p className="mt-2 text-sm font-semibold text-red-700">{localError}</p> : null}
 
-      <div className="actions">
-        <button type="submit">{editingTask ? 'Guardar cambios' : 'Crear tarea'}</button>
+      <div className="mt-4 flex flex-wrap gap-2">
+        <button
+          type="submit"
+          className="rounded-lg bg-brand-500 px-4 py-2 font-medium text-white transition hover:bg-brand-600"
+        >
+          {editingTask ? 'Guardar cambios' : 'Crear tarea'}
+        </button>
         {editingTask ? (
-          <button type="button" className="secondary" onClick={onCancel}>
+          <button
+            type="button"
+            className="rounded-lg bg-slate-600 px-4 py-2 font-medium text-white transition hover:bg-slate-700"
+            onClick={onCancel}
+          >
             Cancelar
           </button>
         ) : null}
